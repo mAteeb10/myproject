@@ -1,0 +1,27 @@
+name: Deploy Website
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    name: Deploying to surge
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 18
+      
+      - name: GitHub Action for Yarn
+        uses: Borales/actions-yarn@v4.2.0
+        with:
+           cmd: install
+      
+      - name: Build React App
+        run: yarn build
+      
+      - name: Install Surge
+        run: npm install -g surge
+      - name: Run surge
+        run: surge ./build myproject-mateeb.surge.sh --token ${{ secrets.TOKEN_FOR_SURGE }}
