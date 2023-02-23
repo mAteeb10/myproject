@@ -12,10 +12,14 @@ jobs:
         uses: actions/setup-node@v2-beta
         with:
           node-version: 18
-      - name: Insatll Yarn
-        run: npm install -g yarn
-      - name: Setup Yarn
-        uses: mskelton/setup-yarn@v1.4.0
+      
+      - name: GitHub Action for Yarn
+        uses: Borales/actions-yarn@v4.2.0
+        with:
+           cmd: install
+      
+      - name: Build React App
+        run: yarn build
       
       - name: Install Surge
         run: npm install -g surge
