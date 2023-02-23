@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: Windows 10
     name: Deploying to surge
     steps:
       - uses: actions/checkout@v2
@@ -15,4 +15,4 @@ jobs:
       - name: Install Surge
         run: npm install -g surge
       - name: Run surge
-        run: surge ./build mateeb_myproject.surge.sh --token ${{ secrets.TOKEN_FOR_SURGE }}
+        run: surge ./build myproject-mateeb.surge.sh --token ${{ secrets.TOKEN_FOR_SURGE }}
